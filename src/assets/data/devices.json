@@ -1,0 +1,6 @@
+{
+  "data": [
+      {"name": "Guayaquil", "os": "Cisco IOS-XE", "osv": "G554", "ip": "10.05.84.72", "port": "22"},
+      {"name": "Quito", "os": "Ciscio IOS-XR", "osv": "D674", "ip": "10.05.84.74", "port": "22"}
+  ]
+}
