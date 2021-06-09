@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { AuthGuard } from '../../pages/service/auth.guard'
+
 //import Chart from 'chart.js';
 
 // core components
@@ -15,6 +18,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
 
   public datasets: any;
@@ -24,6 +28,7 @@ export class DashboardComponent implements OnInit {
   public clicked1: boolean = false;
 
   ngOnInit() {
+    console.log("inicio");
     /*
     this.datasets = [
       [0, 20, 10, 30, 15, 40, 20, 60, 60],

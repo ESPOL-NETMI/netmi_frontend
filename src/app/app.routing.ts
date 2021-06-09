@@ -11,7 +11,7 @@ const routes: Routes =[
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-    canActivate : [AuthGuard]
+    //canActivate : [AuthGuard]
 
   }, {
     path: '',
@@ -22,7 +22,7 @@ const routes: Routes =[
         loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
       }
     ],
-    canActivate : [AuthGuard]
+    //canActivate : [AuthGuard]
   }, {
     path: '',
     component: AuthLayoutComponent,
@@ -48,6 +48,6 @@ const routes: Routes =[
   ],
   exports: [
   ],
-  providers:[AuthGuard]
+ // providers:[AuthGuard]
 })
 export class AppRoutingModule { }
