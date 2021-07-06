@@ -2,108 +2,95 @@
   <div class="container-fluid">
     <div class="header-body">
       <div class="container-fluid d-flex align-items-center">
-        <!--div class="row"-->
-          <div class="col-lg-6 col-md-10">
+
+        <div class="row">
+
+          <div class="col-lg-12 col-md-10">
             <h1 class="display-2 text-white">Devices</h1>
             <p class="text-white mt-0 mb-5">This is the devices information page.</p>
           </div>
-        <!--/div-->
+
+          <ng-template #content let-modal>
+
+            <div class="modal-header">
+              <h2 class="modal-title" id="modal-basic-title">Device insert</h2>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <form #deviceForm="ngForm" (ngSubmit)="onSubmit(deviceForm)">
+                <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="deviceService.selectedDevice.$key">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <div class="input-group">
+                    <input id="name" class="form-control" type="text" placeholder="device" name="name" #name="ngModel" [(ngModel)]="deviceService.selectedDevice.name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="ip">Ip</label>
+                  <div class="input-group">
+                    <input id="ip" class="form-control" type="text" placeholder="ip" name="ip" #ip="ngModel" [(ngModel)]="deviceService.selectedDevice.ip">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="port">Port</label>
+                  <div class="input-group">
+                    <input id="port" class="form-control" type="text" placeholder="port" name="port" #port="ngModel" [(ngModel)]="deviceService.selectedDevice.port">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="os">Operating System</label>
+                  <div class="input-group">
+                    <input id="os" class="form-control" type="text" placeholder="Operating System" name="os" #os="ngModel" [(ngModel)]="deviceService.selectedDevice.os">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <div class="input-group">
+                    <input id="username" class="form-control" type="text" placeholder="Username" name="username" #username="ngModel" [(ngModel)]="deviceService.selectedDevice.username">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <div class="input-group">
+                    <input id="password" class="form-control" type="text" placeholder="Password" name="password" #password="ngModel" [(ngModel)]="deviceService.selectedDevice.password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="epassword">Enable password</label>
+                  <div class="input-group">
+                    <input id="epassword" class="form-control" type="text" placeholder="Enabled Password" name="epassword" #epassword="ngModel" [(ngModel)]="deviceService.selectedDevice.epassword">
+                  </div>
+                </div>
+
+              </form>
+            </div>
+
+            <div class="modal-footer">
+              <div class="form-group">
+                <button type="submit" class="btn btn-outline-dark" (click)="onSubmit(deviceForm)" >Save</button>
+              </div>
+            </div>
+
+          </ng-template>
+
+          <button class="btn btn-info " (click)="open(content)">Add</button>
+
+        </div>
+
       </div>
-      <!--div class="row">
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                  <span class="h2 font-weight-bold mb-0">350,897</span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                    <i class="fas fa-chart-bar"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                <span class="text-nowrap">Since last month</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                  <span class="h2 font-weight-bold mb-0">2,356</span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                    <i class="fas fa-chart-pie"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                <span class="text-nowrap">Since last week</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                  <span class="h2 font-weight-bold mb-0">924</span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                    <i class="fas fa-users"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                <span class="text-nowrap">Since yesterday</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                  <span class="h2 font-weight-bold mb-0">49,65%</span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                    <i class="fas fa-percent"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                <span class="text-nowrap">Since last month</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div-->
     </div>
   </div>
 </div>
-<!-- Page content -->
+
 <div class="container-fluid mt--7">
-  <!-- Table -->
+
   <div class="row">
     <div class="col">
       <div class="card shadow">
+
         <div class="card-header border-0">
           <h3 class="mb-0">Inventory</h3>
         </div>
@@ -114,13 +101,13 @@
                 <th scope="col"></th>
                 <th scope="col">Name</th>
                 <th scope="col">Operating System</th>
-                <th scope="col">OS Version</th>
                 <th scope="col">IP Address</th>
                 <th scope="col">Port</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let country of devices; index as i">
+              <tr *ngFor="let d of devices; index as i">
                 <th scope="row">
                   <div class="media align-items-center">
                     <div class="media-body">
@@ -128,11 +115,18 @@
                     </div>
                   </div>
                 </th>
-                <td>{{ country.name }}</td>
-                <td>{{ country.os }}</td>
-                <td>{{ country.osv }}</td>
-                <td>{{ country.ip }}</td>
-                <td>{{ country.port }}</td>
+                <td>{{ d.name }}</td>
+                <td>{{ d.os }}</td>
+                <td>{{ d.ip }}</td>
+                <td>{{ d.port }}</td>
+                <td>
+                  <a class="btn btn-primary text-white" (click)="openEdit(content,d)">
+                      <i class="far fa-edit"></i>
+                  </a>
+                  <a class="btn btn-danger text-white" (click)="onDelete(d.$key)">
+                      <i class="fas fa-trash-alt"></i>
+                  </a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -141,28 +135,37 @@
         <div class="card-footer py-4">
           <nav aria-label="...">
             <ul class="pagination justify-content-end mb-0">
+
               <li class="page-item disabled">
                 <a class="page-link" href="javascript:void(0)" tabindex="-1">
                   <i class="fas fa-angle-left"></i>
                   <span class="sr-only">Previous</span>
                 </a>
               </li>
+
               <li class="page-item active">
                 <a class="page-link" href="javascript:void(0)">1</a>
               </li>
+
               <li class="page-item">
                 <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
               </li>
-              <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">3</a>
+              </li>
+
               <li class="page-item">
                 <a class="page-link" href="javascript:void(0)">
                   <i class="fas fa-angle-right"></i>
                   <span class="sr-only">Next</span>
                 </a>
               </li>
+
             </ul>
           </nav>
         </div>
+
       </div>
     </div>
   </div>

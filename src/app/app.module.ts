@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
+//import * as firebase from 'firebase/app';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
@@ -16,7 +21,6 @@ import { AuthGuard } from './pages/service/auth.guard';
 import { AuthService } from './pages/service/auth.service';
 
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -25,14 +29,17 @@ import { AuthService } from './pages/service/auth.service';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent
   ],
-  providers: [AuthGuard,AuthService],
+  providers: [AngularFireAuth,AuthGuard,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

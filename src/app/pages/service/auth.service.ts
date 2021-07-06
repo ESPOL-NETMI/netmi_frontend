@@ -1,5 +1,6 @@
 import { NgModule, Injectable } from '@angular/core';
-
+import { AngularFireAuth } from '@angular/fire/auth';
+//import { runInThisContext } from 'vm';
 @Injectable()
 export class AuthService {
 
@@ -7,8 +8,11 @@ export class AuthService {
     private userName:string;
     private passWord:string;
 
-    constructor() {
-    }
+    emailRegex = /^\w+[\.-]?\w+@\w+[\.-]?\w+\.\w{2,3}$/;
+
+    constructor(
+      public afAuth: AngularFireAuth
+    ) {}
 
     login(username: string, password:string) {
         this.userName=username;
@@ -35,6 +39,21 @@ export class AuthService {
     logout(): void{
       localStorage.removeItem("username");
         this.isloggedIn = false;
+    }
+
+    async singIn(username: string, password:string) {
+      const email = username;
+      //const password = this.formLogin.value.passwordLogin;
+      // el método signInWithEmailAndPassword recibe un email y una contraseña que son de tipo string
+      //this.firebase
+      await this.afAuth.signInWithEmailAndPassword(email, password).catch(error => {
+        // se ejecuta este código, si se tiene un error o los datos del usuario no son válidos
+        //console.log(error);
+        console.log("SignIn Error:"+error);
+        return false;
+      });
+      localStorage.setItem("username",username);
+      return true;
     }
 
 }

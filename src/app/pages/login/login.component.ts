@@ -3,7 +3,6 @@ import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -26,14 +25,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
-  check(){
-    var output = this.service.login(this.username, this.password);
-    //console.log(output);
+  async check(){
+    //var output = this.service.login(this.username, this.password);
+    var output = await this.service.singIn(this.username, this.password);
     //console.log(this.username);
     //console.log(this.password);
     if(output == true){
       this.router.navigate(['/dashboard']);
-      console.log("goint to dashboard");
     }else{
       this.invalidCredentialMsg ='Invalid username or password';
     }
