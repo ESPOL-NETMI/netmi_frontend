@@ -19,9 +19,6 @@ export class DeviceService {
     {
       this.deviceList.push({
         name: device.name,
-        password: device.password,
-        epassword: device.epassword,
-        port: device.port,
         os: device.os,
         ip: device.ip
       });
@@ -31,9 +28,6 @@ export class DeviceService {
     {
       this.deviceList.update(device.$key, {
         name: device.name,
-        password: device.password,
-        epassword: device.epassword,
-        port: device.port,
         os: device.os,
         ip: device.ip
       });

@@ -13,7 +13,7 @@
           <ng-template #content let-modal>
 
             <div class="modal-header">
-              <h2 class="modal-title" id="modal-basic-title">Device insert</h2>
+              <h2 class="modal-title" id="modal-basic-title">Device</h2>
               <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -32,12 +32,6 @@
                   <label for="ip">Ip</label>
                   <div class="input-group">
                     <input id="ip" class="form-control" type="text" placeholder="ip" name="ip" #ip="ngModel" [(ngModel)]="deviceService.selectedDevice.ip">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="port">Port</label>
-                  <div class="input-group">
-                    <input id="port" class="form-control" type="text" placeholder="port" name="port" #port="ngModel" [(ngModel)]="deviceService.selectedDevice.port">
                   </div>
                 </div>
                 <div class="form-group">
@@ -102,7 +96,6 @@
                 <th scope="col">Name</th>
                 <th scope="col">Operating System</th>
                 <th scope="col">IP Address</th>
-                <th scope="col">Port</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -118,7 +111,6 @@
                 <td>{{ d.name }}</td>
                 <td>{{ d.os }}</td>
                 <td>{{ d.ip }}</td>
-                <td>{{ d.port }}</td>
                 <td>
                   <a class="btn btn-primary text-white" (click)="openEdit(content,d)">
                       <i class="far fa-edit"></i>

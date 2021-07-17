@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BackService} from '../service/back.service'
 import { DeviceService} from '../service/device.service'
+import { saveAs } from 'file-saver';
 
 import { Device} from '../../modal/device'
 
@@ -14,13 +15,17 @@ import { Device} from '../../modal/device'
 export class DevicesComponent implements OnInit {
   public devices: Device[];
   public device1: Device = new Device();
-  public device2: Device = new Device();
+  public method: String;
+  public methods;
   constructor(private deviceService: DeviceService, private backService: BackService) { }
 
   ngOnInit() {
     this.getDevices();
     this.device1 = undefined;
-    this.device2 = undefined;
+    this.method = undefined;
+    this.methods = [{label:"VRF FROM CISCO IOS - IOSXE TO CISCO IOSXR", value:1},
+    {label:"MP BGP VRF FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:2},
+    {label:"ACL FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:3}]
   }
 
   getDevices(){
@@ -37,14 +42,15 @@ export class DevicesComponent implements OnInit {
 
   getConfiguration(deviceForm: NgForm)
   {
-    console.log(<Device> deviceForm.value.device1);
-    console.log(<Device> deviceForm.value.device2 );
-    this.backService.setConfig(this.device1,this.device2).subscribe(resp => {
-      console.log(resp);
+
+    this.backService.setConfig(this.device1,this.method).subscribe(resp => {
+      const keys = resp.headers;
+      const blob: any = new Blob([resp.body], { type: keys.getAll("content-type").toString() });
+      const file = new File([blob], "config" + '.cfg', { type: keys.getAll("content-type").toString() });
+      saveAs(file);
     }, err => {
       console.log(err);
     });
-    console.log("settings")
   }
 
 }

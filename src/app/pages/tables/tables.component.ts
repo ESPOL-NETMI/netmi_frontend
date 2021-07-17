@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceService} from '../service/device.service'
+import { BackService} from '../service/back.service'
 import { Device} from '../../modal/device'
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
@@ -9,14 +10,14 @@ import { NgForm } from '@angular/forms';
   selector: 'app-tables',
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.scss'],
-  providers: [DeviceService]
+  providers: [DeviceService,BackService]
 })
 export class TablesComponent implements OnInit {
   public devices: Device[];
   closeResult = '';
 
   constructor(private modalService: NgbModal,
-    private deviceService: DeviceService,
+    private deviceService: DeviceService, private backService:  BackService
     ) {}
 
   ngOnInit() {
@@ -56,6 +57,11 @@ export class TablesComponent implements OnInit {
   {
     if(deviceForm.value.$key == null){
       this.deviceService.insertDevice(deviceForm.value);
+      this.backService.insertDevice(deviceForm.value).subscribe(resp => {
+        console.log(resp);
+      }, err => {
+        console.log(err);
+      });
     }else{
       this.deviceService.updateDevice(deviceForm.value);
     }

@@ -3,7 +3,6 @@ export class Device {
   name: string;
   os: string;
   ip: string;
-  port: string;
   username: string;
   password: string;
   epassword: string;
