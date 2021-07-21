@@ -15,7 +15,7 @@ import { NgForm } from '@angular/forms';
 export class TablesComponent implements OnInit {
   public devices: Device[];
   closeResult = '';
-
+  public protocolos;
   constructor(private modalService: NgbModal,
     private deviceService: DeviceService, private backService:  BackService
     ) {}
@@ -24,14 +24,17 @@ export class TablesComponent implements OnInit {
     //this.deviceService.getDevices().then(data => this.devices = data);
     this.resetForm();
     this.getDevices();
+    this.protocolos = [{label:"ssh", value:"ssh"},
+    {label:"telenet",value:"telnet"}]
+
   }
 
   show(){
-    console.log(this.deviceService.getDevices());
+    //console.log(this.deviceService.getDevices());
   }
 
   open(content) {
-    console.log(content);
+    //console.log(content);
     /*if(device.$key != null){
       this.onEdit(device);
     }*/
@@ -42,7 +45,7 @@ export class TablesComponent implements OnInit {
     });
   }
   openEdit(content,device) {
-    console.log(device);
+    //console.log(device);
     if(device.$key != null){
       this.onEdit(device);
     }
@@ -57,11 +60,6 @@ export class TablesComponent implements OnInit {
   {
     if(deviceForm.value.$key == null){
       this.deviceService.insertDevice(deviceForm.value);
-      this.backService.insertDevice(deviceForm.value).subscribe(resp => {
-        console.log(resp);
-      }, err => {
-        console.log(err);
-      });
     }else{
       this.deviceService.updateDevice(deviceForm.value);
     }

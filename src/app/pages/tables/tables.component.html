@@ -41,24 +41,23 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="username">Username</label>
+                  <label for="model">Model</label>
                   <div class="input-group">
-                    <input id="username" class="form-control" type="text" placeholder="Username" name="username" #username="ngModel" [(ngModel)]="deviceService.selectedDevice.username">
+                    <input id="model" class="form-control" type="text" placeholder="model" name="model" #username="ngModel" [(ngModel)]="deviceService.selectedDevice.model">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="password">Password</label>
-                  <div class="input-group">
-                    <input id="password" class="form-control" type="text" placeholder="Password" name="password" #password="ngModel" [(ngModel)]="deviceService.selectedDevice.password">
-                  </div>
+                  <label for="protocol">Protocol</label>
+                    <select class="form-control" id="protocol" name="protocol" [(ngModel)]="deviceService.selectedDevice.protocol">
+                      <option  *ngFor="let d of protocolos" [ngValue] = "d.value" >{{d.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                  <label for="epassword">Enable password</label>
+                  <label for="encryp">Encryption</label>
                   <div class="input-group">
-                    <input id="epassword" class="form-control" type="text" placeholder="Enabled Password" name="epassword" #epassword="ngModel" [(ngModel)]="deviceService.selectedDevice.epassword">
+                    <input id="encryp" class="form-control" type="text" placeholder="Encryption" name="encryp"  [(ngModel)]="deviceService.selectedDevice.encryp">
                   </div>
                 </div>
-
               </form>
             </div>
 
@@ -92,11 +91,14 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th scope="col"></th>
-                <th scope="col">Name</th>
-                <th scope="col">Operating System</th>
-                <th scope="col">IP Address</th>
-                <th scope="col"></th>
+                <th style="text-align:center" scope="col"></th>
+                <th style="text-align:center" scope="col">Name</th>
+                <th style="text-align:center" scope="col">Operating System</th>
+                <th style="text-align:center" scope="col">Model</th>
+                <th style="text-align:center" scope="col">Protocol</th>
+                <th style="text-align:center" scope="col">Encryption</th>
+                <th style="text-align:center" scope="col">IP Address</th>
+                <th style="text-align:center" scope="col"></th>
               </tr>
             </thead>
             <tbody>
@@ -108,9 +110,12 @@
                     </div>
                   </div>
                 </th>
-                <td>{{ d.name }}</td>
-                <td>{{ d.os }}</td>
-                <td>{{ d.ip }}</td>
+                <td style="text-align:center">{{ d.name }}</td>
+                <td style="text-align:center">{{ d.os }}</td>
+                <td style="text-align:center">{{ d.model }}</td>
+                <td style="text-align:center">{{ d.protocol }}</td>
+                <td style="text-align:center">{{ d.encryp }}</td>
+                <td style="text-align:center">{{ d.ip }}</td>
                 <td>
                   <a class="btn btn-primary text-white" (click)="openEdit(content,d)">
                       <i class="far fa-edit"></i>

@@ -3,7 +3,7 @@ export class Device {
   name: string;
   os: string;
   ip: string;
-  username: string;
-  password: string;
-  epassword: string;
+  model: string;
+  protocol: string;
+  encryp:string;
 }
