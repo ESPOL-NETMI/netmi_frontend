@@ -41,23 +41,29 @@
               <div class="row">
                 <div class="col-lg-4">
                   <div class="form-group">
+                    <label class="form-control-label" >Method</label>
+                    <select (ngModelChange)="onChange($event)" class="form-control" id="method" name="method" [(ngModel)]="method">
+                      <option  *ngFor="let d of methods" [ngValue] = "d.devices" >{{d.label}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" >Method-IOS</label>
+                    <select  class="form-control" id="device" name="mios"  [(ngModel)]="mios">
+                      <option  *ngFor="let d of methodios" [ngValue] = "d.value" >{{d.label}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <div class="form-group">
                     <label class="form-control-label" >Device Ip</label>
                     <select class="form-control" id="device1" name="device1" [(ngModel)]="device1">
                       <option  *ngFor="let d of devices" [ngValue] = "d" >{{d.ip}}</option>
                     </select>
-                    <!--input type="text" id="d1" class="form-control form-control-alternative" placeholder="Name"-->
                   </div>
                 </div>
-                <div class="col-lg-8">
-                  <div class="form-group">
-                    <label class="form-control-label" >Method</label>
-                    <select class="form-control" id="method" name="method"  [(ngModel)]="method">
-                      <option  *ngFor="let d of methods" [ngValue] = "d.value" >{{d.label}}</option>
-                    </select>
-                    <!--input type="text" id="d2" class="form-control form-control-alternative" placeholder="Name"-->
-                  </div>
-                </div>
-                <div class="col-lg-4">
+                <div class="col-lg-5">
                   <div class="form-group">
                     <label for="username">Username</label>
                     <div class="input-group">
@@ -65,19 +71,19 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-5">
                   <div class="form-group">
                     <label for="password">Password</label>
                     <div class="input-group">
-                      <input id="password" class="form-control" type="text" placeholder="Password" name="password"  [(ngModel)]="password">
+                      <input id="password" class="form-control" type="password" placeholder="Password" name="password"  [(ngModel)]="password">
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-5">
                   <div class="form-group">
                     <label for="epassword">Enable password</label>
                     <div class="input-group">
-                      <input id="epassword" class="form-control" type="text" placeholder="Enabled Password" name="epassword" [(ngModel)]="epassword">
+                      <input id="epassword" class="form-control" type="password" placeholder="Enabled Password" name="epassword" [(ngModel)]="epassword">
                     </div>
                   </div>
                 </div>

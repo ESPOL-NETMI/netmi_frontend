@@ -24,10 +24,12 @@ export class BackService {
     });
     let ruta = "getparsingcfg";
     let show="";
+    let show2="";
     let plantilla=""
     switch(m) {
       case 1: {
         show = "show vrf detail";
+
         plantilla="./plantillas/vrfdetail.j2";
          break;
       }case 2: {
@@ -55,6 +57,7 @@ export class BackService {
       "port":port,
       "enable":ep,
       "show":show,
+      "show2":show2,
       "plantilla":plantilla
     };
 

@@ -16,12 +16,14 @@ import { ThrowStmt } from '@angular/compiler';
 export class DevicesComponent implements OnInit {
   public devices: Device[];
   public device1: Device = new Device();
-  public method: String;
+  public method: any;
   public username: String;
   public password: String;
   public epassword: String;
   public port: Number;
   public methods;
+  public mios;
+  public methodios;
   public alert: any;
   public alertstatus:boolean=true;
   constructor(private deviceService: DeviceService, private backService: BackService,private modalService: NgbModal) { }
@@ -29,17 +31,43 @@ export class DevicesComponent implements OnInit {
   ngOnInit() {
     this.getDevices();
     this.device1 = undefined;
-    this.method = undefined;
+    this.method = [{label:"", devices:[{label:"", value:0}]}];;
+    this.mios = null
+    this.methodios = null
     this.username = "";
     this.password = "";
     this.epassword = "";
     this.port = 0;
     this.alert={type:"warning",message:"You should check device information"};
-    this.methods = [{label:"VRF FROM CISCO IOS - IOSXE TO CISCO IOSXR", value:1},
-    {label:"MP BGP VRF FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:2},
-    {label:"ACL FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:3}]
+    /*this.methods = [{label:"VRF FROM CISCO IOS - IOSXE TO CISCO IOSXR", value:1},
+    {label:"VRF FROM CISCO IOS - IOSXE TO HUAWEI AR", value:2},
+    {label:"MP BGP VRF FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:3},
+    {label:"MP BGP VRF FROM CISCO IOS - IOSXE TO HUAWEI AR",value:4},
+    {label:"ACL FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:5},
+    {label:"ACL FROM CISCO IOS - IOSXE TO HUAWEI AR",value:6},
+    {label:"PREFIX LIST FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:7},
+    {label:"PREFIX LIST FROM CISCO IOS - IOSXE TO HUAWEI AR",value:8},
+    {label:"ROUTER MAP FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:9},
+    {label:"ROUTER MAP FROM CISCO IOS - IOSXE TO HUAWEI AR",value:10},
+    {label:"INTERFACES FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:11},
+    {label:"INTERFACES FROM CISCO IOS - IOSXE TO HUAWEI AR",value:12},
+    {label:"BRIDGE DOMAIN FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:13}
+  ]*/
+  this.methods = [{label:"VRF", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:1},{label:"CISCO IOS - IOSXE  TO   HUAWEI AR", value:2}]},
+    {label:"MP BGP VRF", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:3},{label:"CISCO IOS - IOSXE  TO   HUAWEI AR", value:4}]},
+    {label:"ACL", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:5},{label:"CISCO IOS - IOSXE  TO   HUAWEI AR", value:6}]},
+    {label:"PREFIX LIST", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:7},{label:"CISCO IOS - IOSXE  TO   HUAWEI AR", value:8}]},
+    {label:"ROUTER MAP", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:9},{label:"CISCO IOS - IOSXE  TO   HUAWEI AR", value:10}]},
+    {label:"INTERFACES", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:11},{label:"CISCO IOS - IOSXE  TO   HUAWEI AR", value:12}]},
+    {label:"BRIDGE DOMAIN", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:13}]}
+  ]
+
   }
 
+  onChange(m) {
+    console.log(m);
+    this.methodios=m;
+}
   getDevices(){
     this.deviceService.getDevices()
       .snapshotChanges().subscribe(item => {
@@ -82,7 +110,7 @@ export class DevicesComponent implements OnInit {
 
     this.modalService.open(content);
     this.alertstatus=true;
-    this.backService.setConfig(this.device1,this.method,this.username,this.password,this.epassword,this.port).subscribe(resp => {
+    this.backService.setConfig(this.device1,this.mios,this.username,this.password,this.epassword,this.port).subscribe(resp => {
       const keys = resp.headers;
       const blob: any = new Blob([resp.body], { type: keys.getAll("content-type").toString() });
       const file = new File([blob], "config" + '.cfg', { type: keys.getAll("content-type").toString() });
