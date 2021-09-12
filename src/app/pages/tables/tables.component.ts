@@ -16,6 +16,8 @@ export class TablesComponent implements OnInit {
   public devices: Device[];
   closeResult = '';
   public protocolos;
+  public alert: any;
+  public alertstatus:boolean=true;
   constructor(private modalService: NgbModal,
     private deviceService: DeviceService, private backService:  BackService
     ) {}
@@ -26,13 +28,13 @@ export class TablesComponent implements OnInit {
     this.getDevices();
     this.protocolos = [{label:"ssh", value:"ssh"},
     {label:"telenet",value:"telnet"}]
-
+    this.alert={type:"warning",message:"You should check device information"};
+    this.alertstatus=true;
   }
 
   show(){
     //console.log(this.deviceService.getDevices());
   }
-
   open(content) {
     //console.log(content);
     /*if(device.$key != null){
@@ -58,10 +60,28 @@ export class TablesComponent implements OnInit {
 
   onSubmit(deviceForm: NgForm)
   {
-    if(deviceForm.value.$key == null){
-      this.deviceService.insertDevice(deviceForm.value);
-    }else{
-      this.deviceService.updateDevice(deviceForm.value);
+    this.alertstatus=true;
+    if(deviceForm.value.name==undefined || deviceForm.value.name.trim()==""){
+      this.alert={type:"warning",message:"You should check device name"};
+      this.alertstatus=false;
+    }if(deviceForm.value.os==undefined  || deviceForm.value.os.trim()==""){
+      this.alert={type:"warning",message:"You should check device OS"};
+      this.alertstatus=false;
+    }if(deviceForm.value.ip==undefined  || deviceForm.value.ip.trim()==""){
+      this.alert={type:"warning",message:"You should check device IP"};
+      this.alertstatus=false;
+    }if(deviceForm.value.protocol==undefined  || deviceForm.value.protocol.trim()==""){
+      this.alert={type:"warning",message:"You should check device protocol"};
+      this.alertstatus=false;
+    }
+    if(this.alertstatus){
+      if(deviceForm.value.$key == null){
+        this.deviceService.insertDevice(deviceForm.value);
+        this.alertstatus=true;
+      }else{
+        this.deviceService.updateDevice(deviceForm.value);
+        this.alertstatus=true;
+      }
     }
     this.resetForm(deviceForm);
     this.modalService.dismissAll();

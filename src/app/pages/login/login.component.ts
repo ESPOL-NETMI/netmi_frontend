@@ -26,10 +26,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   async check(){
-    //var output = this.service.login(this.username, this.password);
     var output = await this.service.singIn(this.username, this.password);
-    //console.log(this.username);
-    //console.log(this.password);
     if(output == true){
       this.router.navigate(['/dashboard']);
     }else{

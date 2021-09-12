@@ -39,35 +39,24 @@ export class DevicesComponent implements OnInit {
     this.epassword = "";
     this.port = 0;
     this.alert={type:"warning",message:"You should check device information"};
-    /*this.methods = [{label:"VRF FROM CISCO IOS - IOSXE TO CISCO IOSXR", value:1},
-    {label:"VRF FROM CISCO IOS - IOSXE TO HUAWEI AR", value:2},
-    {label:"MP BGP VRF FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:3},
-    {label:"MP BGP VRF FROM CISCO IOS - IOSXE TO HUAWEI AR",value:4},
-    {label:"ACL FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:5},
-    {label:"ACL FROM CISCO IOS - IOSXE TO HUAWEI AR",value:6},
-    {label:"PREFIX LIST FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:7},
-    {label:"PREFIX LIST FROM CISCO IOS - IOSXE TO HUAWEI AR",value:8},
-    {label:"ROUTER MAP FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:9},
-    {label:"ROUTER MAP FROM CISCO IOS - IOSXE TO HUAWEI AR",value:10},
-    {label:"INTERFACES FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:11},
-    {label:"INTERFACES FROM CISCO IOS - IOSXE TO HUAWEI AR",value:12},
-    {label:"BRIDGE DOMAIN FROM CISCO IOS - IOSXE TO CISCO IOSXR",value:13}
-  ]*/
+
   this.methods = [{label:"VRF", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:1},{label:"CISCO IOS - IOSXE  TO   HUAWEI AR", value:2}]},
     {label:"MP BGP VRF", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:3},{label:"CISCO IOS - IOSXE  TO   HUAWEI AR", value:4}]},
     {label:"ACL", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:5},{label:"CISCO IOS - IOSXE  TO   HUAWEI AR", value:6}]},
     {label:"PREFIX LIST", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:7},{label:"CISCO IOS - IOSXE  TO   HUAWEI AR", value:8}]},
     {label:"ROUTER MAP", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:9},{label:"CISCO IOS - IOSXE  TO   HUAWEI AR", value:10}]},
     {label:"INTERFACES", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:11},{label:"CISCO IOS - IOSXE  TO   HUAWEI AR", value:12}]},
-    {label:"BRIDGE DOMAIN", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:13}]}
+    {label:"BRIDGE DOMAIN", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:13},
+    {label:"STATIC ROUTING", devices:[{label:"CISCO IOS - IOSXE  TO   CISCO IOSXR", value:14}]},
+  ]}
   ]
 
   }
 
   onChange(m) {
-    console.log(m);
     this.methodios=m;
-}
+  }
+
   getDevices(){
     this.deviceService.getDevices()
       .snapshotChanges().subscribe(item => {

@@ -8,6 +8,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent, canActivate : [AuthGuard] },
     { path: 'configuration',   component: DevicesComponent, canActivate : [AuthGuard] },
     { path: 'tables',         component: TablesComponent, canActivate : [AuthGuard] },
-    //{ path: 'icons',          component: IconsComponent, canActivate : [AuthGuard] },
-    //{ path: 'maps',           component: MapsComponent, canActivate : [AuthGuard] }
 ];
+

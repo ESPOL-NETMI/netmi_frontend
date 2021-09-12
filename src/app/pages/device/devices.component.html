@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="card-body">
-          <ngb-alert [type]="alert.type" (closed)="close(alert)" [hidden]="alertstatus">{{ alert.message }}</ngb-alert>
+          <ngb-alert [type]="alert.type"  [dismissible]="false" [hidden]="alertstatus">{{ alert.message }}</ngb-alert>
           <form #deviceForm="ngForm" (ngSubmit)="getConfiguration(deviceForm,content)">
             <h6 class="heading-small text-muted mb-4">Devices information</h6>
             <div class="pl-lg-12">

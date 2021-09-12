@@ -43,19 +43,19 @@
                 <div class="form-group">
                   <label for="model">Model</label>
                   <div class="input-group">
-                    <input id="model" class="form-control" type="text" placeholder="model" name="model" #username="ngModel" [(ngModel)]="deviceService.selectedDevice.model">
+                    <input id="model" class="form-control" type="text" placeholder="Model" name="model" #model="ngModel" [(ngModel)]="deviceService.selectedDevice.model">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="protocol">Protocol</label>
-                    <select class="form-control" id="protocol" name="protocol" [(ngModel)]="deviceService.selectedDevice.protocol">
+                    <select id="protocol" class="form-control" placeholder="Protocol" name="protocol" #protocol="ngModel" [(ngModel)]="deviceService.selectedDevice.protocol">
                       <option  *ngFor="let d of protocolos" [ngValue] = "d.value" >{{d.label}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                   <label for="encryp">Encryption</label>
                   <div class="input-group">
-                    <input id="encryp" class="form-control" type="text" placeholder="Encryption" name="encryp"  [(ngModel)]="deviceService.selectedDevice.encryp">
+                    <input id="encryp" class="form-control" type="text" placeholder="Encryption" name="encryp" #encryp="ngModel" [(ngModel)]="deviceService.selectedDevice.encryp">
                   </div>
                 </div>
               </form>
@@ -87,6 +87,7 @@
         <div class="card-header border-0">
           <h3 class="mb-0">Inventory</h3>
         </div>
+        <ngb-alert [type]="alert.type"  [dismissible]="false" [hidden]="alertstatus">{{ alert.message }}</ngb-alert>
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
@@ -129,7 +130,7 @@
           </table>
         </div>
 
-        <div class="card-footer py-4">
+        <!--div class="card-footer py-4">
           <nav aria-label="...">
             <ul class="pagination justify-content-end mb-0">
 
@@ -161,7 +162,7 @@
 
             </ul>
           </nav>
-        </div>
+        </div-->
 
       </div>
     </div>

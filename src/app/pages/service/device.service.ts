@@ -20,7 +20,10 @@ export class DeviceService {
       this.deviceList.push({
         name: device.name,
         os: device.os,
-        ip: device.ip
+        ip: device.ip,
+        protocol: device.protocol,
+        model: device.model==undefined? null:device.model,
+        encryp: device.encryp==undefined? null:device.encryp
       });
     }
 
@@ -29,7 +32,10 @@ export class DeviceService {
       this.deviceList.update(device.$key, {
         name: device.name,
         os: device.os,
-        ip: device.ip
+        ip: device.ip,
+        protocol: device.protocol,
+        model: device.model==undefined? null:device.model,
+        encryp: device.encryp==undefined? null:device.encryp
       });
     }
 
@@ -38,10 +44,4 @@ export class DeviceService {
       this.deviceList.remove($key);
     }
 
-    /*getDevices() {
-    return this.http.get<any>('assets/data/devices.json')
-      .toPromise()
-      .then(res => res.data as Device[])
-      .then(data => data);
-    }*/
 }

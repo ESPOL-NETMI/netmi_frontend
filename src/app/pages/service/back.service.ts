@@ -29,17 +29,64 @@ export class BackService {
     switch(m) {
       case 1: {
         show = "show vrf detail";
-
         plantilla="./plantillas/vrfdetail.j2";
-         break;
+        break;
       }case 2: {
         show = "show vrf detail";
         plantilla = "./plantillas/mpbgpvrf.j2";
-         break;
+        break;
       }case 3: {
         show = "show access-list";
         plantilla="./plantillas/accesslist.j2"
-         break;
+        break;
+      }case 4: {
+        show = "show access-list";
+        plantilla="./plantillas/accesslist.j2"
+        break;
+      }case 5: {
+        show = "show access-list";
+        plantilla="./plantillas/accesslist.j2"
+        break;
+      }case 6: {
+        show = "show access-list";
+        plantilla="./plantillas/accesslist.j2"
+        break;
+      }case 7: {
+        show = "show vrf detail";
+        plantilla="./plantillas/vrfdetail.j2";
+        break;
+      }case 8: {
+        show = "show vrf detail";
+        plantilla = "./plantillas/mpbgpvrf.j2";
+        break;
+      }case 9: {
+        show = "show access-list";
+        plantilla="./plantillas/accesslist.j2"
+        break;
+      }case 10: {
+        show = "show access-list";
+        plantilla="./plantillas/accesslist.j2"
+        break;
+      }case 11: {
+        show = "show access-list";
+        plantilla="./plantillas/accesslist.j2"
+        break;
+      }case 12: {
+        show = "show access-list";
+        plantilla="./plantillas/accesslist.j2"
+        break;
+      }case 13: {
+        show = "show access-list";
+        plantilla="./plantillas/accesslist.j2"
+        break;
+      }case 14: {
+        show = "show access-list";
+        plantilla="./plantillas/accesslist.j2"
+        break;
+      }case 15: {
+        show = "show access-list";
+        plantilla="./plantillas/accesslist.j2"
+        break;
       }default: {
         show = "show vrf detail";
         plantilla="./plantillas/vrfdetail.j2";
