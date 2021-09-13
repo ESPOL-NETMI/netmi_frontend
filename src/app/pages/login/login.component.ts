@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   async check(){
     var output = await this.service.singIn(this.username, this.password);
-    if(output == true){
+    if(output){
       this.router.navigate(['/dashboard']);
     }else{
       this.invalidCredentialMsg ='Invalid username or password';

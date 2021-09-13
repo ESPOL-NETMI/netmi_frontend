@@ -43,16 +43,14 @@ export class AuthService {
 
     async singIn(username: string, password:string) {
       const email = username;
-      //const password = this.formLogin.value.passwordLogin;
-      // el método signInWithEmailAndPassword recibe un email y una contraseña que son de tipo string
-      //this.firebase
-      await this.afAuth.signInWithEmailAndPassword(email, password).catch(error => {
-        // se ejecuta este código, si se tiene un error o los datos del usuario no son válidos
-        //console.log(error);
-        console.log("SignIn Error:"+error);
+
+      await this.afAuth.signInWithEmailAndPassword(email, password)
+      .then(res =>{
+        localStorage.setItem("username",username);
+      }).catch((error) => {
+        localStorage.removeItem("username");
         return false;
       });
-      localStorage.setItem("username",username);
       return true;
     }
 
