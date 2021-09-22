@@ -33,15 +33,15 @@ export class BackService {
         break;
       }case 2: {
         show = "show vrf detail";
-        plantilla = "./plantillas/mpbgpvrf.j2";
+        plantilla = "./plantillas/vrfdetailhuawei.j2";
         break;
       }case 3: {
-        show = "show access-list";
-        plantilla="./plantillas/accesslist.j2"
+        show = "show vrf detail";
+        plantilla="./plantillas/mpbgpvrf.j2"
         break;
       }case 4: {
-        show = "show access-list";
-        plantilla="./plantillas/accesslist.j2"
+        show = "show vrf detail";
+        plantilla="./plantillas/mpbgpvrfhuawei.j2"
         break;
       }case 5: {
         show = "show access-list";
@@ -49,39 +49,42 @@ export class BackService {
         break;
       }case 6: {
         show = "show access-list";
-        plantilla="./plantillas/accesslist.j2"
+        plantilla="./plantillas/accesslisthuawei.j2"
         break;
       }case 7: {
-        show = "show vrf detail";
-        plantilla="./plantillas/vrfdetail.j2";
+        show = "show ip prefix-list detail";
+        plantilla="./plantillas/prefixlist.j2";
         break;
       }case 8: {
-        show = "show vrf detail";
-        plantilla = "./plantillas/mpbgpvrf.j2";
+        show = "show ip prefix-list detail";
+        plantilla = "./plantillas/prefixlisthuawei.j2";
         break;
       }case 9: {
-        show = "show access-list";
-        plantilla="./plantillas/accesslist.j2"
+        show = "show route-map all";
+        plantilla="./plantillas/routemap.j2"
         break;
       }case 10: {
-        show = "show access-list";
-        plantilla="./plantillas/accesslist.j2"
+        show = "show route-map all";
+        plantilla="./plantillas/routemaphuawei.j2"
         break;
       }case 11: {
-        show = "show access-list";
-        plantilla="./plantillas/accesslist.j2"
+        ruta = "getvrfstaticroute";
+        show = "show interfaces";
+        show2 = "show ethernet service instance detail";
+        plantilla="./plantillas/interfaces.j2"
         break;
       }case 12: {
-        show = "show access-list";
-        plantilla="./plantillas/accesslist.j2"
+        show = "show interfaces";
+        show2 = "show ethernet service instance detail";
+        plantilla="./plantillas/interfaceshuawei.j2"
         break;
       }case 13: {
-        show = "show access-list";
-        plantilla="./plantillas/accesslist.j2"
+        show = "show ethernet service instance detail";
+        plantilla="./plantillas/bridgedomain.j2"
         break;
       }case 14: {
-        show = "show access-list";
-        plantilla="./plantillas/accesslist.j2"
+        show = "show interfaces";
+        plantilla="./plantillas/staticroutevrf.j2"
         break;
       }case 15: {
         show = "show access-list";
